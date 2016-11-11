@@ -1,5 +1,6 @@
 
 SOURCE_DIR=okta
+PACKAGE_NAME=okta
 
 clean:
 	@find . -name \*.pyc -exec rm {} \;
@@ -15,6 +16,24 @@ clean:
 	@rm -rf ./${SOURCE_DIR}/*_uwsgi.log
 	@rm -rf ./logs 
 	@rm -rf ./htmlcov coverage.xml .coverage
+
+
+###############################################################################
+#
+#	Packaging 
+#
+package: clean
+	python setup.py sdist
+
+install:
+	pip install -r requirements/repo.txt; \
+	python setup.py install
+
+uninstall:
+	pip uninstall -y requirements/repo.txt; \
+	pip uninstall -y $(PACKAGE_NAME)
+
+
 
 
 

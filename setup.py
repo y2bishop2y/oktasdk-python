@@ -35,11 +35,12 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'License :: OSI Approved :: Apache Software License'],
-    packages=find_packages(),
+    packages=find_packages(exclude=['tests', 'tests/unittests']),
     install_requires=[
-        'requests>=2.5.3',
-        'python-dateutil>=2.4.2',
-        'six>=1.9.0'
+        'requests',
+        'python-dateutil',
+        'six'
     ]
 )
