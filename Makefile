@@ -15,6 +15,7 @@ clean:
 	@rm -rf ./${SOURCE_DIR}/.coverage
 	@rm -rf ./${SOURCE_DIR}/*_uwsgi.log
 	@rm -rf ./logs 
+	@rm -rf ./dist
 	@rm -rf ./htmlcov coverage.xml .coverage
 
 
@@ -66,8 +67,19 @@ clonedigger:
 test: clean lint  
 	@echo "Running unit tests"
 	export PYTHONPATH=${PYTHONPATH}:${SOURCE_DIR} && \
-	pytest --cov=${SOURCE_DIR} tests/ \
+	py.test --cov=${SOURCE_DIR} tests/ \
 	    --junitxml=tests/results.xml \
+	    --cov-report html \
+	    --cov-report xml \
+	    --cov-report annotate \
+	    --cov-report term-missing
+
+
+test_unittests: clean lint
+	@echo "Running unit tests"
+	export PYTHONPATH=${PYTHONPATH}:${SOURCE_DIR} && \
+	py.test --cov=${SOURCE_DIR} tests/unittests/ \
+	    --junitxml=tests/unittests/results.xml \
 	    --cov-report html \
 	    --cov-report xml \
 	    --cov-report annotate \

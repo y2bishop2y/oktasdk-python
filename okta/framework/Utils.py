@@ -50,6 +50,9 @@ class Utils(object):
                         elif attr_type == str or attr_type == int or attr_type == dict or attr_type == bool:
                             pass
 
+                        elif attr_type == list:
+                            pass
+
                         else:
                             val = Utils.deserialize(val, attr_type)
 

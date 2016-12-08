@@ -6,7 +6,9 @@ class UserProfile:
         'secondEmail': str,
         'firstName': str,
         'lastName': str,
-        'mobilePhone': str
+        'mobilePhone': str,
+        'karma_points': int,
+        'associations': list 
     }
 
     def __init__(self):
@@ -22,3 +24,8 @@ class UserProfile:
         self.lastName = None  # str
 
         self.mobilePhone = None  # str
+
+        self.karma_points = 0  #int
+
+        self.associations = []
+        
